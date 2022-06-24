@@ -11,7 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Configure database acess
-var connection = builder.Configuration.GetConnectionString(nameof(DataContext));
+var connection = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<DataContext>(options =>
 options.UseMySql(connection, ServerVersion.AutoDetect(connection)));
 
