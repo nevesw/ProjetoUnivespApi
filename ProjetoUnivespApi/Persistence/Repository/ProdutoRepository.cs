@@ -21,10 +21,9 @@ namespace ProjetoUnivespApi.Persistence.Repository
         public async Task<Produto> ObterProdutoPorId(int id)
         {
             IQueryable<Produto> query = _context.Produtos
-               .Include(a => a.Id)
                .Include(a => a.Descricao)
                .Include(a => a.Quantidade)
-               .Include(a => a.DataVenda);
+               .Include(a => a.CodProduto);
 
             query = query.AsNoTracking().OrderBy(a => a.Id)
                 .Where(a => a.Id == id);
@@ -35,10 +34,9 @@ namespace ProjetoUnivespApi.Persistence.Repository
         public async Task<Produto[]> ObterProdutosAsync()
         {
             IQueryable<Produto> query = _context.Produtos
-                .Include(a => a.Id)
                 .Include(a => a.Descricao)
                 .Include(a => a.Quantidade)
-                .Include(a => a.DataVenda);
+                .Include(a => a.CodProduto);
 
             query = query.AsNoTracking().OrderBy(a => a.Id);
 
