@@ -21,14 +21,7 @@ namespace ProjetoUnivespApi.Persistence.Repository
 
         public async Task<Pedido> ObterPedidoPorId(int id)
         {
-            IQueryable<Pedido> query = _context.Pedidos
-               .Include(a => a.codPedido)
-               .Include(a => a.Descricao)
-               .Include(a => a.Quantidade)
-               .Include(a => a.DataPedido)
-               .Include(a => a.PagamentoId)
-               .Include(a => a.AlunoId)
-               .Include(a => a.ProdutoId);
+            IQueryable<Pedido> query = _context.Pedidos;
 
             query = query.AsNoTracking().OrderBy(a => a.Id)
                 .Where(a => a.Id == id);
@@ -38,14 +31,7 @@ namespace ProjetoUnivespApi.Persistence.Repository
 
         public async Task<Pedido[]> ObterPedidosAsync()
         {
-            IQueryable<Pedido> query = _context.Pedidos
-               .Include(a => a.codPedido)
-               .Include(a => a.Descricao)
-               .Include(a => a.Quantidade)
-               .Include(a => a.DataPedido)
-               .Include(a => a.PagamentoId)
-               .Include(a => a.AlunoId)
-               .Include(a => a.ProdutoId);
+            IQueryable<Pedido> query = _context.Pedidos;
 
             query = query.AsNoTracking().OrderBy(a => a.Id);
 
@@ -55,11 +41,7 @@ namespace ProjetoUnivespApi.Persistence.Repository
         public async Task<Pedido[]> ObterPedidosPorAluno(int alunoId)
         {
 
-            IQueryable<Pedido> query = _context.Pedidos
-                .Include(a => a.Id)
-                .Include(a => a.Descricao)
-                .Include(a => a.Quantidade)
-                .Include(a => a.DataPedido);
+            IQueryable<Pedido> query = _context.Pedidos;
 
             query = query.AsNoTracking().OrderBy(a => a.Id)
                 .Where(a => a.AlunoId == alunoId);
