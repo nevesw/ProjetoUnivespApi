@@ -6,11 +6,12 @@ namespace ProjetoUnivespApi.Application.Dtos
 {
     public class PedidoInsertDto
     {
-        public string produtoId { get; set; }
-        public string alunoId { get; set; }
-        public string pagamentoId { get; set; }
+        public int Id { get; set; }
+        public int produtoId { get; set; }
+        public int alunoId { get; set; }
+        public int pagamentoId { get; set; }
         public DateTime? DataPedido { get; set; }
         public string Plano { get; set; }
-        public string Meses { get; set; }
+        public int Meses { get; set; }
     }
 }

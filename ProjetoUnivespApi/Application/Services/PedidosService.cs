@@ -28,17 +28,18 @@ namespace ProjetoUnivespApi.Application.Services
         public async Task<PedidoDto> AddPedido(PedidoInsertDto model)
         {
             try
-            {            
-
+            {
+                Guid codigoPedido = Guid.NewGuid();
                 var pedido = _mapper.Map<Pedido>(model);
-                pedido.codPedido = Guid.NewGuid().ToString();
+                pedido.codPedido = codigoPedido.ToString();
 
                 _geralRepository.Add<Pedido>(pedido);
 
                 if (await _geralRepository.SaveChangesAsync())
                 {
                     var pedidoRetorno = await _pedidoRepository.ObterPedidoPorId(pedido.Id);
-                    return _mapper.Map<PedidoDto>(pedidoRetorno);
+                    var resultado = _mapper.Map<PedidoDto>(pedidoRetorno);
+                    return resultado;
                 }
                 return null;
             }
