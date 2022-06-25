@@ -17,17 +17,9 @@ namespace ProjetoUnivespApi.Persistence.Context
         public DbSet<Professor> Professores { get; set; }
         public DbSet<Pagamento> Pagamentos { get; set; }
         public DbSet<Produto> Produtos { get; set; }
-        public DbSet<PedidoProduto> PedidoProdutos { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }       
         public DbSet<Login> Logins { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<PedidoProduto>()
-                .HasKey(p => new { p.PedidoId, p.ProdutoId });
-
-
-        }
     }
 }

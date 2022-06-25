@@ -13,6 +13,6 @@ namespace ProjetoUnivespApi.Domain.Entities
         public string Plano { get; set; }
         public double PrecoVenda { get; set; }
         public DateTime? DataVenda { get; set; }
-        public List<PedidoProduto> PedidoProdutos { get; set; }
+
     }
 }

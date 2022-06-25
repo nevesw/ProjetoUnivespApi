@@ -13,7 +13,7 @@ namespace ProjetoUnivespApi.Domain.Entities
         public int Quantidade { get; set; }
         public int AlunoId { get; set; }
         public Aluno Aluno { get; set; }
-        public List<PedidoProduto> PedidoProdutos { get; set; }
+        public Produto Produto { get; set; }
 
     }
 }
