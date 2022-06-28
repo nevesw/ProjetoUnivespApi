@@ -32,7 +32,8 @@ namespace ProjetoUnivespApi.Application.Services
             try
             {
                 bool horarioDisponivel = false;
-                var professorDoAluno = await _professorRepository.ObterProfessorPorNome(model.NomeProfessor.Split(':')[1].Trim().ToString());
+                //var professorDoAluno = await _professorRepository.ObterProfessorPorNome(model.NomeProfessor.Split(':')[1].Trim().ToString());
+                var professorDoAluno = await _professorRepository.ObterProfessorPorId(model.ProfessorId);
 
                 if (professorDoAluno.AgendaProfessor.DataAgendada.Value.Date != model.DataAula.Value.Date
                     && professorDoAluno.AgendaProfessor.DataAgendada.Value.Hour != model.DataAula.Value.Hour)
