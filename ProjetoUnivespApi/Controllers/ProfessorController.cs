@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ProjetoUnivespApi.Application.Dtos;
+using ProjetoUnivespApi.Application.Interfaces;
 using ProjetoUnivespApi.Domain.Entities;
 using ProjetoUnivespApi.Persistence;
 using ProjetoUnivespApi.Persistence.Context;
@@ -15,107 +17,112 @@ namespace ProjetoUnivespApi.Controllers
     [Route("api/professor")]
     public class ProfessorController : Controller
     {
+        private readonly IProfessoresService _professoresService;
+
+        public ProfessorController(IProfessoresService professoresService)
+        {
+            _professoresService = professoresService;
+        }
+
         [HttpGet]
         [Route("lista_professores")]
         [AllowAnonymous]
-        public async Task<ActionResult<List<Professor>>> Get([FromServices] DataContext context)
+        public async Task<IActionResult> Get()
         {
-            var professores = context.Professores.AsQueryable();
+            try
+            {
+                var professores = await _professoresService.ObterProfessoresAsync();
+                if (professores == null) return NotFound("Nenhum professor encontrado.");
 
-            return professores.ToList();
+                return Ok(professores);
+            }
+            catch (Exception ex)
+            {
+
+                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                    $"Erro ao tentar recuperar professores. Erro: {ex.Message}");
+            }
         }
 
         [HttpGet]
         [Route("busca_professor/{id}")]
         [AllowAnonymous]
-        public async Task<ActionResult<List<Professor>>> Get([FromServices] DataContext context, int id)
+        public async Task<IActionResult> Get(int id)
         {
-            var professor = context.Professores.Find(id);
+            try
+            {
+                var professor = await _professoresService.ObterProfessorPorId(id);
+                if (professor == null) return NotFound("Professor não encontrado.");
 
-            return Ok(professor);
+
+                return Ok(professor);
+            }
+            catch (Exception ex)
+            {
+
+                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                    $"Erro ao tentar recuperar professor. Erro: {ex.Message}");
+            }
         }
 
         [HttpPost]
         [Route("cadastro_professor")]
         [AllowAnonymous]
-        public async Task<ActionResult<Professor>> Post([FromServices] DataContext context,
-             [FromBody] Professor modelProfessor)
+        public async Task<IActionResult> Post(ProfessorInsertDto modelProfessor)
         {
-            if (ModelState.IsValid)
+
+            try
             {
                 modelProfessor.DataCriacao = DateTime.UtcNow.ToUniversalTime();
-                context.Professores.Add(modelProfessor);
-                await context.SaveChangesAsync();
-                return Ok(new
-                {
-                    StatusCode = 200,
-                    Messsage = "Professor cadastrado com sucesso"
-                });
+                var professor = await _professoresService.AddProfessor(modelProfessor);
+                if (professor == null) return BadRequest("Erro ao tentar adicionar professor.");
+
+                return Ok(professor);
             }
-            else
+            catch (Exception ex)
             {
-                return BadRequest(ModelState);
+
+                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                    $"Erro ao tentar adicionar professor. Erro: {ex.Message}");
             }
         }
 
         [HttpPut]
         [Route("editar_professor")]
         [AllowAnonymous]
-        public async Task<ActionResult<Professor>> Put([FromServices] DataContext context,
-            [FromBody] Professor modelProfessor)
+        public async Task<IActionResult> Put(ProfessorDto modelProfessor)
         {
-            if (ModelState.IsValid)
+            try
             {
-                var aluno = context.Professores.AsNoTracking().FirstOrDefault(x => x.Id == modelProfessor.Id);
-                if (aluno == null)
-                {
-                    return NotFound(new
-                    {
-                        StatusCode = 404,
-                        Message = "Professor não encontrado"
-                    });
-                }
-                else
-                {
-                    context.Entry(modelProfessor).State = EntityState.Modified;
-                    context.SaveChanges();
-                    return Ok(new
-                    {
-                        StatusCode = 200,
-                        Message = "Professor atualizado com sucesso"
-                    });
-                }
+                var professor = await _professoresService.AtualizaProfessor(modelProfessor.Id, modelProfessor);
+                if (professor == null) return BadRequest("Erro ao tentar atualizar professor.");
+
+                return Ok(professor);
             }
-            else
+            catch (Exception ex)
             {
-                return BadRequest(ModelState);
+
+                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                    $"Erro ao tentar atualizar professor. Erro: {ex.Message}");
             }
         }
 
         [HttpDelete]
         [Route("deletar_professor/{id}")]
         [AllowAnonymous]
-        public async Task<ActionResult<Aluno>> Delete([FromServices] DataContext context,
-            int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var aluno = context.Alunos.Find(id);
-            if (aluno == null)
+            try
             {
-                return NotFound(new
-                {
-                    StatusCode = 404,
-                    Message = "Professor não encontrado"
-                });
+                return await _professoresService.DeletarProfessor(id) ?
+                   Ok(new { message = "Professor deletado com sucesso." }) :
+                   BadRequest("Não foi possivel deletar professor.");
             }
-            else
+            catch (Exception ex)
             {
-                context.Remove(aluno);
-                context.SaveChanges();
-                return Ok(new
-                {
-                    StatusCode = 200,
-                    Message = "Professor excluido com sucesso"
-                });
+
+                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                    $"Erro ao tentar deletar professor. Erro: {ex.Message}");
             }
         }
     }

@@ -53,7 +53,7 @@ namespace ProjetoUnivespApi.Controllers
             {
 
                 return this.StatusCode(StatusCodes.Status500InternalServerError,
-                    $"Erro ao tentar recuperar alunos. Erro: {ex.Message}");
+                    $"Erro ao tentar recuperar aluno. Erro: {ex.Message}");
             }
         }
 

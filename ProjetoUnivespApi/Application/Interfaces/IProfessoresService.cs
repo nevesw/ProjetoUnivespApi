@@ -1,4 +1,5 @@
-﻿using ProjetoUnivespApi.Domain.Entities;
+﻿using ProjetoUnivespApi.Application.Dtos;
+using ProjetoUnivespApi.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,10 +9,10 @@ namespace ProjetoUnivespApi.Application.Interfaces
 {
     public interface IProfessoresService
     {
-        Task<Professor> AddProfessor(Professor model);
-        Task<Professor> AtualizaProfessor(int professorId, Professor model);
+        Task<ProfessorDto> AddProfessor(ProfessorInsertDto model);
+        Task<ProfessorDto> AtualizaProfessor(int professorId, ProfessorDto model);
         Task<bool> DeletarProfessor(int professorId);
-        Task<Professor[]> ObterProfessoresAsync();
-        Task<Professor> ObterProfessorPorId(int id);
+        Task<ProfessorDto[]> ObterProfessoresAsync();
+        Task<ProfessorDto> ObterProfessorPorId(int professorId);
     }
 }
