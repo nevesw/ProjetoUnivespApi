@@ -24,6 +24,7 @@ builder.Services.AddScoped<IPedidosService, PedidosService>();
 builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
 builder.Services.AddScoped<IProdutosService, ProdutosService>();
 builder.Services.AddScoped<IAgendaAlunoRepository, AgendaAlunoRepository>();
+builder.Services.AddScoped<IAgendaAlunoService, AgendaAlunoService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -33,6 +34,7 @@ builder.Services.AddSwaggerGen();
 var connection = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<DataContext>(options =>
 options.UseMySql(connection, ServerVersion.AutoDetect(connection)));
+
 
 var app = builder.Build();
 

@@ -15,6 +15,9 @@ namespace ProjetoUnivespApi.Application.Helpers
             CreateMap<Aluno, AlunoDto>().ReverseMap();
             CreateMap<Aluno, AlunoInsertDto>().ReverseMap();
 
+            CreateMap<AgendaAluno, AlunoDto>().ReverseMap();
+            CreateMap<AgendaAluno, AlunoInsertDto>().ReverseMap();
+
             CreateMap<Professor, ProfessorDto>().ReverseMap();
             CreateMap<Professor, ProfessorInsertDto>().ReverseMap();
 

@@ -13,33 +13,34 @@ namespace ProjetoUnivespApi.Application.Services
     public class AlunosService : IAlunosService
     {
         private readonly IGeralRepository _geralRepository;
-        private readonly IAlunoRepository _alunoRepository;
+        private readonly IAgendaAlunoService _agendaAlunoService;
         private readonly IProfessorRepository _professorRepository;
-        private readonly IAgendaAlunoRepository _agendaAlunoRepository;
+        private readonly IAlunoRepository _alunoRepository;
         private readonly IMapper _mapper;
 
         public AlunosService(IGeralRepository geralRepository,
-            IAlunoRepository alunoRepository,
+            IAgendaAlunoService agendaAlunoService,
             IProfessorRepository professorRepository,
-            IAgendaAlunoRepository agendaAlunoRepository,
+            IAlunoRepository alunoRepository,
             IMapper mapper)
         {
             _geralRepository = geralRepository;
-            _alunoRepository = alunoRepository;
+            _agendaAlunoService = agendaAlunoService;
             _professorRepository = professorRepository;
-            _agendaAlunoRepository = agendaAlunoRepository;
+            _alunoRepository = alunoRepository;
             _mapper = mapper;
         }
         public async Task<AlunoDto> AddAluno(AlunoInsertDto model)
         {
             try
-            {
+            {        
+
+                var agendaAluno =  await _agendaAlunoService.AddAulaAgendaAluno(model, model.DataAula);
+
                 var aluno = _mapper.Map<Aluno>(model);
 
-                var agendaAluno = InsereAulaAgendaAluno(model);
-
                 aluno.AgendaAlunoId = agendaAluno?.Id;
-                aluno.ProfessorId = model.ProfessorId;
+
                 _geralRepository.Add<Aluno>(aluno);
                 
 
@@ -57,31 +58,6 @@ namespace ProjetoUnivespApi.Application.Services
             }
         }
 
-        public async Task<AgendaAluno> InsereAulaAgendaAluno(AlunoInsertDto model)
-        {
-            try
-            {
-                var agendaAluno = new AgendaAluno()
-                {
-                    Data = model.DataAula,
-                };
-
-                _geralRepository.Add<AgendaAluno>(agendaAluno);
-
-                if (await _geralRepository.SaveChangesAsync())
-                {
-                    var agendaRetorno = await _agendaAlunoRepository.ObterAgendaAlunoPorId(agendaAluno.Id);
-                    return _mapper.Map<AgendaAluno>(agendaRetorno);
-                }
-
-                return null;
-            }
-            catch (Exception ex)
-            {
-
-                throw new Exception(ex.Message);
-            }
-        }
         public async Task<AlunoDto> AtualizaAluno(int alunoId, AlunoDto model)
         {
             try

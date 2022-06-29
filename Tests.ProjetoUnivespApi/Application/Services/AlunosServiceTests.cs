@@ -2,6 +2,7 @@
 using Moq;
 using ProjetoUnivespApi.Application.Dtos;
 using ProjetoUnivespApi.Application.Helpers;
+using ProjetoUnivespApi.Application.Interfaces;
 using ProjetoUnivespApi.Application.Services;
 using ProjetoUnivespApi.Domain.Entities;
 using ProjetoUnivespApi.Persistence.Interfaces;
@@ -15,6 +16,7 @@ namespace Tests.ProjetoUnivespApi.Application.Services
     {
         private readonly AlunosService _alunosService;
         private readonly Mock<IAlunoRepository> _alunoRepositoryMock = new Mock<IAlunoRepository>();
+        private readonly Mock<IAgendaAlunoService> _agendaAlunoService = new Mock<IAgendaAlunoService>();
         private readonly Mock<IProfessorRepository> _professorRepositoryMock = new Mock<IProfessorRepository>();
         private readonly Mock<IGeralRepository> _geralRepositoryMock = new Mock<IGeralRepository>();
         private readonly IMapper _mapper;
@@ -25,8 +27,9 @@ namespace Tests.ProjetoUnivespApi.Application.Services
             var configuration = new MapperConfiguration(cfg => cfg.AddProfile(profile));
             _mapper = new Mapper(configuration);
             _alunosService = new AlunosService(_geralRepositoryMock.Object,
-                _alunoRepositoryMock.Object,
+                _agendaAlunoService.Object,
                 _professorRepositoryMock.Object,
+                 _alunoRepositoryMock.Object,
                 _mapper);
         }
 
@@ -64,11 +67,7 @@ namespace Tests.ProjetoUnivespApi.Application.Services
                 ProfessorId = 1,
                 Cpf = "801.223.910-80",
                 StatusPagamento = "Pago",
-                AgendaAluno = new AgendaAluno
-                {
-                    Id = 1,
-                    Data = new DateTime(2022, 11, 30),
-                },
+
             };
 
             var aluno = new Aluno
