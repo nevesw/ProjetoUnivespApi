@@ -21,7 +21,7 @@ namespace ProjetoUnivespApi.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Data = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     Horario = table.Column<DateTime>(type: "datetime(6)", nullable: true),
-                    DiaSemanaAulaAgendada = table.Column<string>(type: "longtext", nullable: false)
+                    DiaSemanaAulaAgendada = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     DataPrevistaAula = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     DataDisponivelAluno = table.Column<DateTime>(type: "datetime(6)", nullable: true)
@@ -40,7 +40,7 @@ namespace ProjetoUnivespApi.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     DataAgendada = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     HorarioAgendado = table.Column<DateTime>(type: "datetime(6)", nullable: true),
-                    DiaSemanaAulaAgendada = table.Column<string>(type: "longtext", nullable: false)
+                    DiaSemanaAulaAgendada = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     DataPrevistaAula = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     DataDisponivelProfessor = table.Column<DateTime>(type: "datetime(6)", nullable: true)
@@ -57,19 +57,19 @@ namespace ProjetoUnivespApi.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Logradouro = table.Column<string>(type: "longtext", nullable: false)
+                    Logradouro = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Numero = table.Column<string>(type: "longtext", nullable: false)
+                    Numero = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Cep = table.Column<string>(type: "longtext", nullable: false)
+                    Cep = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Cidade = table.Column<string>(type: "longtext", nullable: false)
+                    Cidade = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Estado = table.Column<string>(type: "longtext", nullable: false)
+                    Estado = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Complemento = table.Column<string>(type: "longtext", nullable: false)
+                    Complemento = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Pais = table.Column<string>(type: "longtext", nullable: false)
+                    Pais = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
@@ -84,13 +84,13 @@ namespace ProjetoUnivespApi.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Usuario = table.Column<string>(type: "longtext", nullable: false)
+                    Usuario = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Senha = table.Column<string>(type: "longtext", nullable: false)
+                    Senha = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Tipo = table.Column<string>(type: "longtext", nullable: false)
+                    Tipo = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Email = table.Column<string>(type: "longtext", nullable: false)
+                    Email = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
@@ -105,7 +105,7 @@ namespace ProjetoUnivespApi.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    TipoPagamento = table.Column<string>(type: "longtext", nullable: false)
+                    TipoPagamento = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
@@ -120,14 +120,14 @@ namespace ProjetoUnivespApi.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CodProduto = table.Column<int>(type: "int", nullable: false),
-                    Descricao = table.Column<string>(type: "longtext", nullable: false)
+                    CodProduto = table.Column<int>(type: "int", nullable: true),
+                    Descricao = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Quantidade = table.Column<string>(type: "longtext", nullable: false)
+                    Quantidade = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Plano = table.Column<string>(type: "longtext", nullable: false)
+                    Plano = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    PrecoVenda = table.Column<double>(type: "double", nullable: false),
+                    PrecoVenda = table.Column<double>(type: "double", nullable: true),
                     DataVenda = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
@@ -142,25 +142,25 @@ namespace ProjetoUnivespApi.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Nome = table.Column<string>(type: "longtext", nullable: false)
+                    Nome = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Email = table.Column<string>(type: "longtext", nullable: false)
+                    Email = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     DataCriacao = table.Column<DateTime>(type: "datetime(6)", nullable: true),
-                    Status = table.Column<string>(type: "longtext", nullable: false)
+                    Status = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Cnpj = table.Column<string>(type: "longtext", nullable: false)
+                    Cnpj = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    NumeroCelular = table.Column<string>(type: "longtext", nullable: false)
+                    NumeroCelular = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     DataNascimento = table.Column<DateTime>(type: "datetime(6)", nullable: true),
-                    UsuarioPlataforma = table.Column<string>(type: "longtext", nullable: false)
+                    UsuarioPlataforma = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    SenhaPlataforma = table.Column<string>(type: "longtext", nullable: false)
+                    SenhaPlataforma = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Cpf = table.Column<string>(type: "longtext", nullable: false)
+                    Cpf = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Rg = table.Column<string>(type: "longtext", nullable: false)
+                    Rg = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     AgendaProfessorId = table.Column<int>(type: "int", nullable: true)
                 },
@@ -181,23 +181,23 @@ namespace ProjetoUnivespApi.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Nome = table.Column<string>(type: "longtext", nullable: false)
+                    Nome = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Email = table.Column<string>(type: "longtext", nullable: false)
+                    Email = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     DataCriacao = table.Column<DateTime>(type: "datetime(6)", nullable: true),
-                    StatusPagamento = table.Column<string>(type: "longtext", nullable: false)
+                    StatusPagamento = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     DataUltimoPagamento = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     DataNascimento = table.Column<DateTime>(type: "datetime(6)", nullable: true),
-                    Nacionalidade = table.Column<string>(type: "longtext", nullable: false)
+                    Nacionalidade = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     DataVencimento = table.Column<DateTime>(type: "datetime(6)", nullable: true),
-                    NumeroCelular = table.Column<string>(type: "longtext", nullable: false)
+                    NumeroCelular = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Cpf = table.Column<string>(type: "longtext", nullable: false)
+                    Cpf = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Rg = table.Column<string>(type: "longtext", nullable: false)
+                    Rg = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ProfessorId = table.Column<int>(type: "int", nullable: true),
                     EnderecoId = table.Column<int>(type: "int", nullable: true),
@@ -230,15 +230,15 @@ namespace ProjetoUnivespApi.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    codPedido = table.Column<string>(type: "longtext", nullable: false)
+                    codPedido = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Descricao = table.Column<string>(type: "longtext", nullable: false)
+                    Descricao = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     DataPedido = table.Column<DateTime>(type: "datetime(6)", nullable: true),
-                    PagamentoId = table.Column<int>(type: "int", nullable: false),
-                    Quantidade = table.Column<int>(type: "int", nullable: false),
-                    AlunoId = table.Column<int>(type: "int", nullable: false),
-                    ProdutoId = table.Column<int>(type: "int", nullable: false)
+                    PagamentoId = table.Column<int>(type: "int", nullable: true),
+                    Quantidade = table.Column<int>(type: "int", nullable: true),
+                    AlunoId = table.Column<int>(type: "int", nullable: true),
+                    ProdutoId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -247,20 +247,17 @@ namespace ProjetoUnivespApi.Migrations
                         name: "FK_Pedidos_Alunos_AlunoId",
                         column: x => x.AlunoId,
                         principalTable: "Alunos",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Pedidos_Pagamentos_PagamentoId",
                         column: x => x.PagamentoId,
                         principalTable: "Pagamentos",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Pedidos_Produtos_ProdutoId",
                         column: x => x.ProdutoId,
                         principalTable: "Produtos",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 

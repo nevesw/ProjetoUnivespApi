@@ -35,7 +35,6 @@ namespace ProjetoUnivespApi.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("DiaSemanaAulaAgendada")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<DateTime?>("Horario")
@@ -62,7 +61,6 @@ namespace ProjetoUnivespApi.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("DiaSemanaAulaAgendada")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<DateTime?>("HorarioAgendado")
@@ -83,7 +81,6 @@ namespace ProjetoUnivespApi.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Cpf")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<DateTime?>("DataCriacao")
@@ -99,33 +96,27 @@ namespace ProjetoUnivespApi.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<int?>("EnderecoId")
                         .HasColumnType("int");
 
                     b.Property<string>("Nacionalidade")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Nome")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("NumeroCelular")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<int?>("ProfessorId")
                         .HasColumnType("int");
 
                     b.Property<string>("Rg")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("StatusPagamento")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
@@ -146,31 +137,24 @@ namespace ProjetoUnivespApi.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Cep")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Cidade")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Complemento")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Estado")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Logradouro")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Numero")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Pais")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
@@ -185,19 +169,15 @@ namespace ProjetoUnivespApi.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Senha")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Tipo")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Usuario")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
@@ -212,7 +192,6 @@ namespace ProjetoUnivespApi.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("TipoPagamento")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
@@ -226,27 +205,25 @@ namespace ProjetoUnivespApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("AlunoId")
+                    b.Property<int?>("AlunoId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("DataPedido")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Descricao")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("PagamentoId")
+                    b.Property<int?>("PagamentoId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProdutoId")
+                    b.Property<int?>("ProdutoId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Quantidade")
+                    b.Property<int?>("Quantidade")
                         .HasColumnType("int");
 
                     b.Property<string>("codPedido")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
@@ -266,25 +243,22 @@ namespace ProjetoUnivespApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("CodProduto")
+                    b.Property<int?>("CodProduto")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("DataVenda")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Descricao")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Plano")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<double>("PrecoVenda")
+                    b.Property<double?>("PrecoVenda")
                         .HasColumnType("double");
 
                     b.Property<string>("Quantidade")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
@@ -302,11 +276,9 @@ namespace ProjetoUnivespApi.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Cnpj")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Cpf")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<DateTime?>("DataCriacao")
@@ -316,31 +288,24 @@ namespace ProjetoUnivespApi.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Nome")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("NumeroCelular")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Rg")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("SenhaPlataforma")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Status")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("UsuarioPlataforma")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
@@ -375,21 +340,15 @@ namespace ProjetoUnivespApi.Migrations
                 {
                     b.HasOne("ProjetoUnivespApi.Domain.Entities.Aluno", "Aluno")
                         .WithMany("Pedidos")
-                        .HasForeignKey("AlunoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AlunoId");
 
                     b.HasOne("ProjetoUnivespApi.Domain.Entities.Pagamento", "Pagamento")
                         .WithMany()
-                        .HasForeignKey("PagamentoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PagamentoId");
 
                     b.HasOne("ProjetoUnivespApi.Domain.Entities.Produto", "Produto")
                         .WithMany()
-                        .HasForeignKey("ProdutoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProdutoId");
 
                     b.Navigation("Aluno");
 
