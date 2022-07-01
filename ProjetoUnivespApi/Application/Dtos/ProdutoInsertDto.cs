@@ -6,6 +6,7 @@ namespace ProjetoUnivespApi.Application.Dtos
 {
     public class ProdutoInsertDto
     {
+        public string? CodProduto { get; set; }
         public string? Descricao { get; set; }
         public string? Quantidade { get; set; }
         public double? PrecoVenda { get; set; }

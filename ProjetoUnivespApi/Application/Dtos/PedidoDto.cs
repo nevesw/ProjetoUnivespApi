@@ -12,7 +12,7 @@ namespace ProjetoUnivespApi.Application.Dtos
         public int? pagamentoId { get; set; }
         public DateTime? DataPedido { get; set; }
         public string? Plano { get; set; }
-        public int? Meses { get; set; }
+        public int? Quantidade { get; set; }
 
     }
 }
