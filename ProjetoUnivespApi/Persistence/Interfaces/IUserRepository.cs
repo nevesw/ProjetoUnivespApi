@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace ProjetoUnivespApi.Persistence.Interfaces
 {
-    public interface ILoginRepository
+    public interface IUserRepository
     {
-        Task<Login> GetUser(string usuario, string senha);
+        Task<User> GetUser(string usuario, string senha);
+
+        Task<User> GetExternalUser(string usuario, string senha);
     }
 }

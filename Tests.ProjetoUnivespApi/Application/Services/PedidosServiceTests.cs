@@ -36,7 +36,6 @@ namespace Tests.ProjetoUnivespApi.Application.Services
                 Id = 1,
                 produtoId = 1,
                 alunoId = 1,
-                Meses = 1,
                 pagamentoId = 1,
                 Plano = "Premium"
             };
@@ -46,7 +45,6 @@ namespace Tests.ProjetoUnivespApi.Application.Services
                 Id = 1,
                 produtoId = insert.produtoId,
                 alunoId = insert.alunoId,
-                Meses = insert.Meses,
                 pagamentoId = insert.pagamentoId,
                 Plano = insert.Plano,
             };
@@ -56,7 +54,6 @@ namespace Tests.ProjetoUnivespApi.Application.Services
                 Id = 1,
                 ProdutoId = insert.produtoId,
                 AlunoId = insert.alunoId,
-                Quantidade = insert.Meses,
                 PagamentoId = insert.pagamentoId,
                 Descricao = insert.Plano,
             };

@@ -8,29 +8,29 @@ using System.Threading.Tasks;
 
 namespace ProjetoUnivespApi.Application.Services
 {
-    public class LoginService : ILoginService
+    public class UserService : IUserService
     {
         private readonly IGeralRepository _geralRepository;
-        private readonly ILoginRepository _loginRepository;
+        private readonly IUserRepository _userRepository;
 
 
-        public LoginService(IGeralRepository geralRepository,
-            ILoginRepository loginRepository
+        public UserService(IGeralRepository geralRepository,
+            IUserRepository userRepository
 )
         {
             _geralRepository = geralRepository;
-            _loginRepository = loginRepository;
+            _userRepository = userRepository;
         }
-        public  async Task<Login> AddUser(Login model)
+        public  async Task<User> AddUser(User model)
         {
             try
             {
               
-                _geralRepository.Add<Login>(model);
+                _geralRepository.Add<User>(model);
 
                 if (await _geralRepository.SaveChangesAsync())
                 {
-                    var loginRetorno = await _loginRepository.GetUser(model.Usuario, model.Senha);
+                    var loginRetorno = await _userRepository.GetUser(model.Usuario, model.Senha);
                     return loginRetorno;
                 }
                 return null;
@@ -41,15 +41,33 @@ namespace ProjetoUnivespApi.Application.Services
             }
         }
 
-        public async Task<Login> GetUser(string usuario, string senha)
+        public async Task<User> GetUser(string usuario, string senha)
         {
             try
             {
-                var user = await _loginRepository.GetUser(usuario, senha);
+                var user = await _userRepository.GetUser(usuario, senha);
 
                 if (user != null)
                 {
                     return user;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<User> GetExternalUser(string usuario, string senha)
+        {
+            try
+            {
+                var externalUser = await _userRepository.GetExternalUser(usuario, senha);
+
+                if (externalUser != null)
+                {
+                    return externalUser;
                 }
                 return null;
             }

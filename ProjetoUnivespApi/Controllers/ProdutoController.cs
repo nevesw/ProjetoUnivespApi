@@ -21,7 +21,7 @@ namespace ProjetoUnivespApi.Controllers
 
         [HttpGet]
         [Route("lista_produtos")]
-        [AllowAnonymous]
+        [Authorize(Roles = "funcionario,externo")]
         public async Task<IActionResult> Get()
         {
             try
@@ -41,7 +41,7 @@ namespace ProjetoUnivespApi.Controllers
 
         [HttpGet]
         [Route("busca_produto/{id}")]
-        [AllowAnonymous]
+        [Authorize(Roles = "funcionario,externo")]
         public async Task<IActionResult> Get(int id)
         {
             try
@@ -62,7 +62,7 @@ namespace ProjetoUnivespApi.Controllers
 
         [HttpPost]
         [Route("cadastro_produto")]
-        [AllowAnonymous]
+        [Authorize(Roles = "funcionario")]
         public async Task<IActionResult> Post(ProdutoInsertDto modelProduto)
         {
             try
@@ -85,7 +85,7 @@ namespace ProjetoUnivespApi.Controllers
 
         [HttpPut]
         [Route("editar_produto")]
-        [AllowAnonymous]
+        [Authorize(Roles = "funcionario")]
         public async Task<IActionResult> Put(ProdutoDto modelProduto)
         {
             try
@@ -106,7 +106,7 @@ namespace ProjetoUnivespApi.Controllers
 
         [HttpDelete]
         [Route("deletar_produto/{id}")]
-        [AllowAnonymous]
+        [Authorize(Roles = "funcionario")]
         public async Task<IActionResult> Delete(int id)
         {
             try

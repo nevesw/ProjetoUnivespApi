@@ -18,7 +18,7 @@ namespace ProjetoUnivespApi.Controllers
 
         [HttpGet]
         [Route("lista_alunos")]
-        [AllowAnonymous]
+        [Authorize(Roles = "funcionario,externo")]
         public async Task<IActionResult> Get()
         {
             try
@@ -38,7 +38,7 @@ namespace ProjetoUnivespApi.Controllers
 
         [HttpGet]
         [Route("busca_aluno/{id}")]
-        [AllowAnonymous]
+        [Authorize(Roles = "funcionario,externo")]
         public async Task<IActionResult> Get(int id)
         {
             try
@@ -59,7 +59,7 @@ namespace ProjetoUnivespApi.Controllers
 
         [HttpPost]
         [Route("cadastro_aluno")]
-        [AllowAnonymous]
+        [Authorize(Roles = "funcionario")]
         public async Task<IActionResult> Post(AlunoInsertDto modelAluno)
         {
             try
@@ -82,7 +82,7 @@ namespace ProjetoUnivespApi.Controllers
 
         [HttpPut]
         [Route("editar_aluno")]
-        [AllowAnonymous]
+        [Authorize(Roles = "funcionario")]
         public async Task<IActionResult> Put(AlunoDto modelAluno)
         {
             try
@@ -103,7 +103,7 @@ namespace ProjetoUnivespApi.Controllers
 
         [HttpDelete]
         [Route("deletar_aluno/{id}")]
-        [AllowAnonymous]
+        [Authorize(Roles = "funcionario")]
         public async Task<IActionResult> Delete(int id)
         {
             try

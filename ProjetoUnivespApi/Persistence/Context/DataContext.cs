@@ -19,7 +19,7 @@ namespace ProjetoUnivespApi.Persistence.Context
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }       
-        public DbSet<Login> Logins { get; set; }
+        public DbSet<User> Users { get; set; }
 
     }
 }

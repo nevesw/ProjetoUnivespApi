@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace ProjetoUnivespApi.Application.Interfaces
 {
-    public interface ILoginService
+    public interface IUserService
     {
-        Task<Login> AddUser(Login model);
+        Task<User> AddUser(User model);
 
-        Task<Login> GetUser(string usuario, string senha);
+        Task<User> GetUser(string usuario, string senha);
+
+        Task<User> GetExternalUser(string usuario, string senha);
     }
 }

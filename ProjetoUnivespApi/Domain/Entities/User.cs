@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ProjetoUnivespApi.Domain.Entities
 {
-    public class Login
+    public class User
     {
         public int Id { get; set; }
         public string? Usuario { get; set; }
